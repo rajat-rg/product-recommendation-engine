@@ -4,3 +4,6 @@ product_similarity.pkl
 all_products.csv
 .ipynb_checkpoints/
 virtflip/
+_pycache_/
+.vscode/
+dbsqlite3
