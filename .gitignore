@@ -4,3 +4,4 @@ product_similarity.pkl
 all_products.csv
 .ipynb_checkpoints/
 virtflip/
+__pycache__/
