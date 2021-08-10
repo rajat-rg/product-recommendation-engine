@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Bootstrap CSS -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KyZXEAg3QhqLMpG8r+8fhAXLRk2vvoC2f3B09zVXn8CA5QIVfZOJ3BCsw2P0p/We" crossorigin="anonymous">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
 
     <title>Hello, world!</title>
   </head>
@@ -30,11 +30,95 @@
         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
         <button class="btn btn-outline-success" type="submit">Search</button>
       </form>
-      <button type="button" class="btn btn-success mx-2">Sign-Up</button>
-      <button type="button" class="btn btn-success">Log-In</button>
+      <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#signup">Sign-Up</button>
+      <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login">Log-In</button>
     </div>
   </div>
 </nav>
+
+
+
+<!-- Modal for signup -->
+<div class="modal fade" id="signup" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="staticBackdropLabel"> Signup Here</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+          <form method="post" action="/signup">
+              {% csrf_token %}
+              <div class="mb-1">
+                <label for="name" class="form-label"> <b> First Name</b></label>
+                <input type="text" class="form-control" id="fname" name="fname" placeholder="Enter your name" required>
+              </div>
+
+              <div class="mb-1">
+                <label for="name" class="form-label"><b>Last Name</b></label>
+                <input type="text" class="form-control" id="lname" name="lname" placeholder="Enter your last name" required>
+              </div>
+
+                  <div class="mb-1">
+                <label for="email" class="form-label"><b>Email address</b></label>
+                <input type="email" class="form-control" id="email"  name="email" placeholder="name@example.com" required>
+              </div>
+                  <div class="mb-1">
+                <label for="username" class="form-label"><b>Username</b></label>
+                <input type="text " class="form-control" id="username"  name="username" placeholder="username" required>
+              </div>
+                  <div class="mb-1">
+                <label for="password" class="form-label"><b>Password</b></label>
+                <input type="password" class="form-control" id="pass1"  name="pass1" placeholder="Password" required>
+              </div>
+                  <div >
+                <label for="password" class="form-label"><b>Confirm password</b></label>
+                <input type="password" class="form-control" id="pass2"  name="pass2" placeholder="Confirm Password" required>
+              </div>
+        </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary" >Sign Up</button>
+      </div>
+    </div>
+  </div>
+        </form>
+</div>
+<!-- Modal for login -->
+<div class="modal fade" id="login" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="login" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="login">Login</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+        <div class="modal-body">
+          <form method="post" action="/login">
+            {% csrf_token %}
+            
+                <div class="mb-1">
+              <label for="username" class="form-label"><b>Username</b></label>
+              <input type="text" class="form-control" id="loginusername"  name="loginusername" placeholder="username" required>
+            </div>
+                <div class="mb-1">
+              <label for="password" class="form-label"><b>Password</b></label>
+              <input type="password" class="form-control" id="loginpassword"  name="loginpassword" placeholder="Password" required>
+            </div>
+      </div>
+    <div class="modal-footer">
+      <button type="submit" class="btn btn-primary">Login</button>
+    </div>
+  </div>
+</div>
+          </form>
+
+</div>
+
+
+
+
+
+
+
     {% block body %}{% endblock body %}
 
     <!-- Optional JavaScript; choose one of the two! -->
