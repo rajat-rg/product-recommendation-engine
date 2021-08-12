@@ -1,9 +1,147 @@
 {% extends 'base.html' %}
+{% block title %}Trolly | Home{% endblock title %} 
+{%block style %}
+<style>
+  body{
+    margin: 0;
+    padding: 0;
+    background: grey;
+  }
+  .css {
+    background-color: whitesmoke;
+    margin-top: 20px;
+    border-radius: 5px;
+    color: rgb(0, 0, 0);
+    border-bottom: rgb(0, 0, 0) solid 3px;
+    border-right: black solid 3px;
+  }
+  .css h1 {
+    text-align: center;
+    padding: 0;
+    margin: 0;
+    background-color: rgb(0, 0, 0);
+    color: whitesmoke;
+  }
+  .css h1 span {
+    color: rgb(226, 138, 6);
+    font-style: italic;
+    text-shadow: -1px 1px 0 #000, 1px 1px 0 #000, 1px -1px 0 #000,
+      -1px -1px 0 #000;
+  }
+  .main {
+    background-color: lightgray;
+    margin-top: 20px;
+    border-radius: 5px;
+    border-bottom: black solid 3px;
+    border-right: black solid 3px;
+  }
+  .footer {
+    padding:0;
+    background-color: rgb(0, 0, 0);
+    color: white;
+  }
+  .footer .link,
+  .footer .link a {
+    text-decoration: none;
+    color: rgb(171, 143, 248);
+    margin-bottom:0;
+  }
+  .card {
+    width: 200px;
+    margin: auto;
+  }
+  </style>
 
-{% block body %}
+{% endblock style %} {% block body %}
+<header>
+  <div class="container css">
+    <h1>Welcome to <span> TROLLY</span>.</h1>
+    <h2>Your only solution of finding best products recommendations.</h2>
+    <small
+      ><span
+        >Go ahead and find your favourite product in search bar above, we aim to
+        show you recommended poducts.</span
+      ></small
+    >
+  </div>
+</header>
+<main>
+  <div class="container main">
+    <h3>Your prevoius search results:</h3>
+    <div class="album py-5">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for product in search %}
 
-<h1>hi</h1>
+        <div class="card shadow-sm">
+          <svg
+            class="bd-placeholder-img card-img-top"
+            width="100%"
+            height="200"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <rect width="100%" height="100%" fill="#55595c" />
+            <image xlink:href="{{image_link}}" width="100%" height="100%" />
+          </svg>
 
+          <div class="card-body">
+            <p class="card-text"><b>{{product}}</b></p>
+          </div>
+        </div>
 
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+
+  <div class="container main">
+    <h3>Products you may like:</h3>
+    <div class="album py-5">
+      <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+        {% for product in like %}
+
+        <div class="card shadow-sm">
+          <svg
+            class="bd-placeholder-img card-img-top"
+            width="100%"
+            height="200"
+            xmlns="http://www.w3.org/2000/svg"
+            role="img"
+            preserveAspectRatio="xMidYMid slice"
+            focusable="false"
+          >
+            <rect width="100%" height="100%" fill="#55595c" />
+            <image xlink:href="{{image_link}}" width="100%" height="100%" />
+          </svg>
+
+          <div class="card-body">
+            <p class="card-text"><b>{{product}}</b></p>
+          </div>
+        </div>
+
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</main>
+<footer>
+  <div class="footer">
+    <p>
+      This is a project developed to demonstrate our knowledge about machine
+      learning.
+    </p>
+    <p>All rights reserved Jaypee University, Anoopshahr &copy 2021</p>
+    <p class="link">
+      Find the source code of this website by clicking
+      <a
+        href="https://github.com/rajat-rg/product-recommendation-engine"
+        target="blank"
+        >HERE</a
+      >.
+    </p>
+  </div>
+</footer>
 
 {% endblock body %}
