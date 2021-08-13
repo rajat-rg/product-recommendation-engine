@@ -6,3 +6,4 @@ all_products.csv
 __pycache__/
 .vscode/
 dbsqlite3
+migrations/
