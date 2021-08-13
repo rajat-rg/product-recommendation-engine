@@ -7,7 +7,7 @@
 
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
-
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <title>{% block title %}{% endblock title %}</title>
     {% block style %}{% endblock style %}
   </head>
@@ -27,11 +27,25 @@
         </li>
         
       </ul>
-      <form class="d-flex" action="/recommendations" method = "POST">
+      <form class="d-flex" action="/recommendations" method = "GET">
       {% csrf_token %}
-        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search">
+        <input class="form-control me-2" type="search" name="search" placeholder="Search" aria-label="Search" id="search">
         <button class="btn btn-outline-success" type="submit" >Search</button>
       </form>
+      <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+      <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+      <script>
+  $( function() {
+    var availableTags = 
+    $( "#search" ).autocomplete({
+      source: "{%url 'Recommendations' %}"
+    });
+  } );
+  </script>
+
+
+
+
       <button type="button" class="btn btn-success mx-2" data-bs-toggle="modal" data-bs-target="#signup">Sign-Up</button>
       <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#login">Log-In</button>
     </div>
