@@ -54,3 +54,13 @@ body{
     /* color:#080530; */
     background-color:#19164b;
   }
+
+  a{
+    text-decoration: none;
+    color:white;
+
+  }
+  a:hover{
+    color:orangered;
+    
+  }
