@@ -12,3 +12,5 @@ __pycache__/
 db.sqlite3
 migrations/
 management/
+# use to clear the history of file
+# git filter-branch --index-filter 'git rm -r --cached --ignore-unmatch <file/dir>' HEAD
