@@ -4,10 +4,11 @@ virtflip/
 flipkart.csv
 15000_products.csv
 5000_products.csv
-5000_products.rar
+5000_similarity.rar
 all_products.csv
 .ipynb_checkpoints/
 __pycache__/
 .vscode/
-dbsqlite3
+db.sqlite3
 migrations/
+management/
