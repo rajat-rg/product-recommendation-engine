@@ -3,6 +3,10 @@ body{
     padding: 0;
     background: #06081c;
   }
+  header
+  {
+    color:white;
+  }
   .css {
     background-color: #06081c;
     margin-top: 20px;
