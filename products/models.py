@@ -10,3 +10,5 @@ class products_model(models.Model):
 
     def __str__(self):
         return self.name
+    def getName(self):
+        return self.name
