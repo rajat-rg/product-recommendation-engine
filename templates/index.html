@@ -1,19 +1,16 @@
 {% extends 'base.html' %}
-{% block title %}Trolly | Home{% endblock title %} 
+{% block title %}Trolly | Home{% endblock title %}
 {%block style %}
 <link rel="stylesheet" href="../static/index.css">
 
 {% endblock style %} {% block body %}
+
 <header>
   <div class="container css">
     <h1>Welcome to <span> TROLLY</span>.</h1>
     <h2>Your only solution of finding best products recommendations.</h2>
-    <small
-      ><span
-        >Go ahead and find your favourite product in search bar above, we aim to
-        show you recommended poducts.</span
-      ></small
-    >
+    <small><span>Go ahead and find your favourite product in search bar above, we aim to
+        show you recommended poducts.</span></small>
   </div>
 </header>
 <main>
@@ -24,15 +21,8 @@
         {% for product in search %}
 
         <div class="card shadow-sm">
-          <svg
-            class="bd-placeholder-img card-img-top"
-            width="100%"
-            height="200"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
+            role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
             <!-- <rect width="100%" height="100%" fill="#55595c" /> -->
             <image xlink:href="{{image_link}}" width="100%" height="100%" />
           </svg>
@@ -54,15 +44,8 @@
         {% for product in like %}
 
         <div class="card ">
-          <svg
-            class="bd-placeholder-img card-img-top"
-            width="100%"
-            height="200"
-            xmlns="http://www.w3.org/2000/svg"
-            role="img"
-            preserveAspectRatio="xMidYMid slice"
-            focusable="false"
-          >
+          <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
+            role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
             <!-- <rect width="100%" height="100%" fill="#55595c" /> -->
             <image xlink:href="{{image_link}}" width="100%" height="100%" />
           </svg>
@@ -85,11 +68,8 @@
     </p>
     <p>All rights reserved Jaypee University, Anoopshahr &copy 2021</p>
     <p class="link">
-      <a
-        href="https://github.com/rajat-rg/product-recommendation-engine"
-        target="blank"
-        >Find the source code of this website by clicking HERE</a
-      >.
+      <a href="https://github.com/rajat-rg/product-recommendation-engine" target="blank">Find the source code of this
+        website by clicking HERE</a>.
     </p>
   </div>
 </footer>

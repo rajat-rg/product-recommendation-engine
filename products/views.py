@@ -2,7 +2,7 @@ from django.shortcuts import redirect, render
 from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
-from django.contrib.auth import authenticate, login
+from django.contrib.auth import authenticate, login, logout
 from .models import products_model
 import pickle
 # Create your views here.
@@ -54,6 +54,12 @@ def handleSignup(request):
 
         if pass1 == pass2:
             user = User.objects.create_user(username, email, pass1, first_name = fname, last_name = lname)
+            # u = open("searches.pkl","wb")
+            # us = open("searches.pkl","rb")
+            # d = pickle.load(us)
+            # d[username]=[]
+            # pickle.dump(d,u)
+            # u.close()
             user.save()
         else:
             messages.info(request, "Password didn't matched !!")
@@ -67,7 +73,13 @@ def handleLogin(request):
         user = authenticate(username=username, password=password)
         if user is not None:
             login(request, user)
+            messages.success(request, "Logged in !!")
+            
             return redirect("Home")
         else:
             messages.warning(request, "Youre not recognized !!")
-    return render("index.html")
+    return redirect("Home")
+
+def handleLogout(request):
+    logout(request)
+    return redirect("Home")
