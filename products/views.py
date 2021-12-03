@@ -3,7 +3,7 @@ from django.http import JsonResponse
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.auth import authenticate, login, logout
-from .models import products_model
+from .models import products_model, userHistory
 import pickle
 # Create your views here.
 
@@ -11,7 +11,11 @@ products = products_model.objects.all()
 similarity = pickle.load(open('similarity.pkl','rb'))
 
 def index(request):
-    context = {"search": ["like","like","like","like","like"], "like":["like","like","like","like","like"]}
+    searches = userHistory.objects.filter(user=request.user)[::-1]
+    if len(searches)>=5:
+        searches = searches[0:5]
+    famous = products_model.objects.all().order_by('-views')[:5]
+    context = {"search": searches, "famous":famous}
     return render(request,"index.html", context)
 
 
@@ -33,10 +37,14 @@ def recommendations(request):
         product = products_model.objects.all().filter(name = searched_product)[0]
         product_index = product.id -1
         searched_product = products_model.objects.get(id = product_index+1)
+        searched_product.views = searched_product.views+1
+        searched_product.save()
+        if request.user is not None:
+            history = userHistory(user=request.user, product=searched_product)
+            history.save()
         distances = similarity[product_index][1]
         product_list = sorted(list(enumerate(distances)), reverse= True, key = lambda x: x[1])[1:6]
         product_recommended = list()
-        poster = list()
         for i in product_list:
             x =products_model.objects.get(id= i[0]+1)
             product_recommended.append(x)  
@@ -54,12 +62,6 @@ def handleSignup(request):
 
         if pass1 == pass2:
             user = User.objects.create_user(username, email, pass1, first_name = fname, last_name = lname)
-            # u = open("searches.pkl","wb")
-            # us = open("searches.pkl","rb")
-            # d = pickle.load(us)
-            # d[username]=[]
-            # pickle.dump(d,u)
-            # u.close()
             user.save()
         else:
             messages.info(request, "Password didn't matched !!")
@@ -74,7 +76,6 @@ def handleLogin(request):
         if user is not None:
             login(request, user)
             messages.success(request, "Logged in !!")
-            
             return redirect("Home")
         else:
             messages.warning(request, "Youre not recognized !!")
@@ -83,3 +84,7 @@ def handleLogin(request):
 def handleLogout(request):
     logout(request)
     return redirect("Home")
+
+
+# trolly
+# trolly1234

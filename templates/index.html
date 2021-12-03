@@ -15,7 +15,7 @@
 </header>
 <main>
   <div class="container main">
-    <h3>Your prevoius search results:</h3>
+    <h3>Your previous search results:</h3>
     <div class="album py-5">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
         {% for product in search %}
@@ -24,7 +24,7 @@
           <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
             role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
             <!-- <rect width="100%" height="100%" fill="#55595c" /> -->
-            <image xlink:href="{{image_link}}" width="100%" height="100%" />
+            <image xlink:href="{{product.product.image}}" width="100%" height="100%" />
           </svg>
 
           <div class="card-body">
@@ -41,13 +41,13 @@
     <h3>Products you may like:</h3>
     <div class="album py-5">
       <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
-        {% for product in like %}
+        {% for product in famous %}
 
         <div class="card ">
           <svg class="bd-placeholder-img card-img-top" width="100%" height="200" xmlns="http://www.w3.org/2000/svg"
             role="img" preserveAspectRatio="xMidYMid slice" focusable="false">
             <!-- <rect width="100%" height="100%" fill="#55595c" /> -->
-            <image xlink:href="{{image_link}}" width="100%" height="100%" />
+            <image xlink:href="{{product.image}}" width="100%" height="100%" />
           </svg>
 
           <div class="card-body">
